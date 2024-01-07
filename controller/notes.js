@@ -25,10 +25,12 @@ const GetNotesDataById = async (req, res) => {
 
 const GetNotesData = async (req, res) => {
   try {
-    const note = await notes.find({});
-    if (!note) {
+    const note = await notes.find({}).sort({ createdAt: -1 });
+
+    if (!note || note.length === 0) {
       return res.status(404).json({ error: "Note not found" });
     }
+
     res.json(note);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
