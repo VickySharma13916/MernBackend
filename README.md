@@ -61,7 +61,7 @@ Request Body: { "title": "Updated Title", "description": "Updated Description" }
 DELETE /api/notes/:id: Delete a specific note.
 
 Deployment
-The backend is deployed on Netlify.
+The backend is deployed on Render at https://mern-stack-backend-71mo.onrender.com/.
 
 Contributors
 VickySharma13916
