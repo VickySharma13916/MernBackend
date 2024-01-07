@@ -61,7 +61,7 @@ Request Body: { "title": "Updated Title", "description": "Updated Description" }
 DELETE /api/notes/:id: Delete a specific note.
 
 Deployment
-The backend is deployed on Heroku at your-heroku-app-url.
+The backend is deployed on Netlify.
 
 Contributors
 VickySharma13916
