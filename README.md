@@ -34,7 +34,7 @@ Start the server:
 
 bash
 Copy code
-npm start
+npm run dev
 The server will be running on http://localhost:5000.
 
 API Endpoints
