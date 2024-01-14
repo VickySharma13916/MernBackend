@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 App.use(cors());
 App.use(express.json());
 App.use(express.urlencoded({ extended: true }));
-
+App.use("/uploads", express.static("uploads"));
 const user_route = require("./routes/admin");
 const notes_route = require("./routes/notes");
 App.use("/api/admin", user_route);

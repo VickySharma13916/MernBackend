@@ -5,6 +5,21 @@ const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
+const postAdminImage = async (req, res) => {
+  try {
+    let adminAddImage = "";
+    if (req.file) {
+      const { mimetype } = req.file;
+      if (mimetype.startsWith("image/")) {
+        adminAddImage = req.file.destination + req.file.filename;
+      }
+    }
+    res.status(200).json({ imageUrl: adminAddImage });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+};
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -18,9 +33,9 @@ const login = async (req, res) => {
 };
 
 const signUp = async (req, res) => {
-  const { email, password,name } = req.body;
+  const { email, password, name,userImage } = req.body;
   try {
-    const userAdmin = await admin.signup(email, password,name);
+    const userAdmin = await admin.signup(email, password, name,userImage);
     const token = createToken(userAdmin._id);
     res.status(200).json({ user: userAdmin, token });
   } catch (error) {
@@ -31,4 +46,5 @@ const signUp = async (req, res) => {
 module.exports = {
   login,
   signUp,
+  postAdminImage,
 };

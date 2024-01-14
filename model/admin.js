@@ -18,12 +18,15 @@ const adminSchema = new mongoose.Schema(
     name: {
       type: String,
     },
+    userImage: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
 // static methods
-adminSchema.statics.signup = async function (email, password, name) {
+adminSchema.statics.signup = async function (email, password, name, userImage) {
   if (!email || !password) {
     throw Error("Email and password must be filled.");
   }
@@ -43,6 +46,7 @@ adminSchema.statics.signup = async function (email, password, name) {
   const user = this.create({
     email,
     name,
+    userImage,
     password: hash,
   });
   return user;
